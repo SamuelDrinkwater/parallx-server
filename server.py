@@ -3,7 +3,7 @@ import os
 import time
 import urllib
 import requests
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from google.cloud import storage
 from firebase import Firebase
 
@@ -43,7 +43,7 @@ def current_milli_time():
 
 @app.route('/')
 def index():
-    return "Hello Canva 👋"
+    return send_from_directory('static', 'landing.html')
 
 @app.route('/upload-test')
 def upload():
