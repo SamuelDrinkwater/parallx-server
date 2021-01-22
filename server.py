@@ -4,6 +4,7 @@ import time
 import urllib
 import requests
 from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
 from google.cloud import storage
 from firebase import Firebase
 
@@ -21,6 +22,7 @@ storage = firebase.storage()
 
 
 app = Flask(__name__)
+CORS(app)
 
 def build_download_url(filename, token):
   return f"https://firebasestorage.googleapis.com/v0/b/parallax-bc3d4.appspot.com/o/{filename}?alt=media&token={token}"
