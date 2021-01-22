@@ -1,7 +1,14 @@
 # 3d-ken-burns
-This is a reference implementation of 3D Ken Burns Effect from a Single Image [1] using PyTorch. Given a single input image, it animates this still image with a virtual camera scan and zoom subject to motion parallax. Should you be making use of our work, please cite our paper [1].
+
+This is a reference implementation of 3D Ken Burns Effect from a Single Image using PyTorch. Given a single input image, it animates this still image with a virtual camera scan and zoom subject to motion parallax.
 
 <a href="https://arxiv.org/abs/1909.05483" rel="Paper"><img src="http://content.sniklaus.com/kenburns/paper.jpg" alt="Paper" width="100%"></a>
+## Google Collab
+A fully functional Google Collab session can be found
+[here](https://colab.research.google.com/gist/SamuelDrinkwater/3131504d428270d7b90680f15f4e0115/3d-ken-burns-multiple.ipynb).
+Once run, the collab session will spin up a flask server that serves web requests to `{ngrok url}/process`. Each request should include a body that looks like `{ url: 'image-url' }`. The server will retrieve an image from the url, process it into a video, send that video to firebase and then return a response containing a link to download the processed video.
+
+Note: The firebase credentials in `server.py` currently reference an inactive project and will need to be updated before they can be used.
 
 ## setup
 Several functions are implemented in CUDA using CuPy, which is why CuPy is a required dependency. It can be installed using `pip install cupy` or alternatively using one of the provided binary packages as outlined in the CuPy repository. Please also make sure to have the `CUDA_HOME` environment variable configured.
